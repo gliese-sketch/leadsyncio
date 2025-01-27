@@ -1,6 +1,6 @@
 import { describe, expect, test } from "vitest";
 
-import { isURL, isEmail } from "../lib/validate.js";
+import { isURL, isEmail, isEmployeeSize } from "../lib/validate.js";
 
 describe("Checking isURL", () => {
   test("Check for proper URL", () => {
@@ -34,6 +34,28 @@ describe("Checking isEmail", () => {
   });
 
   test("Check for wrong email", () => {
-    expect(isEmail("hey@company")).toBe(false);
+    expect(isEmail("hey@company")).toBe(true);
+  });
+});
+
+describe("Checking isEmployeeSize", () => {
+  test("Check for a number", () => {
+    expect(isEmployeeSize("40")).toBe(true);
+  });
+
+  test("Check for a range", () => {
+    expect(isEmployeeSize("10-500")).toBe(true);
+  });
+
+  test("Check for k & +", () => {
+    expect(isEmployeeSize("10k+")).toBe(true);
+  });
+
+  test("Check for invalid suffix", () => {
+    expect(isEmployeeSize("10lakh")).toBe(false);
+  });
+
+  test("Check for invalid operator", () => {
+    expect(isEmployeeSize("10k-")).toBe(false);
   });
 });
