@@ -1,0 +1,22 @@
+{
+  "name": "leadsync",
+  "version": "1.0.0",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "start": "node --watch index.js --env-file=.env --input=companies.csv --clean=final.csv --report=report.csv",
+    "test": "vitest"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "papaparse": "^5.5.1",
+    "validator": "^13.12.0",
+    "yargs": "^17.7.2"
+  },
+  "devDependencies": {
+    "vitest": "^3.0.4"
+  }
+}
