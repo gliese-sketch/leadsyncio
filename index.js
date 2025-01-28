@@ -4,7 +4,7 @@ import { hideBin } from "yargs/helpers";
 const argv = yargs(hideBin(process.argv)).argv;
 
 import { readCSV, writeCSV } from "./lib/io.js";
-import service from "./lib/service.js";
+import service from "./lib/core.js";
 
 // This is responsible to start our program
 function main() {
@@ -17,4 +17,5 @@ function main() {
   // Generate report file
   writeCSV(argv.errors, errors);
 }
+
 main();
