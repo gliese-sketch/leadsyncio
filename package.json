@@ -4,7 +4,7 @@
   "main": "index.js",
   "type": "module",
   "scripts": {
-    "start": "node --watch index.js --env-file=.env --input=companies.csv --clean=final.csv --report=report.csv",
+    "start": "node --watch index.js --env-file=.env --input=companies.csv --clean=final.csv --errors=report.csv",
     "test": "vitest"
   },
   "keywords": [],
