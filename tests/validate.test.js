@@ -1,7 +1,8 @@
 import { describe, expect, test } from "vitest";
 
-import { isURL, isEmail, isEmployeeSize } from "../lib/validate.js";
+import { isURL, isEmail, isEmployeeSize, isCompanyName } from "../lib/validate.js";
 
+// MARK: isURL
 describe("Checking isURL", () => {
   test("Check for proper URL", () => {
     expect(isURL("https://google.com")).toBe(true);
@@ -11,7 +12,7 @@ describe("Checking isURL", () => {
     expect(isURL("www.google.im")).toBe(true);
   });
 
-  test("Checks for any matching URL pattern", () => {
+  test("Checks for incomplete pattern", () => {
     expect(isURL("google")).toBe(false);
   });
 
@@ -24,6 +25,7 @@ describe("Checking isURL", () => {
   });
 });
 
+// MARK: isEmail
 describe("Checking isEmail", () => {
   test("Check for proper email", () => {
     expect(isEmail("hey@website.com")).toBe(true);
@@ -34,10 +36,11 @@ describe("Checking isEmail", () => {
   });
 
   test("Check for wrong email", () => {
-    expect(isEmail("hey@company")).toBe(true);
+    expect(isEmail("hey@company")).toBe(false);
   });
 });
 
+// MARK: isEmployeeSize
 describe("Checking isEmployeeSize", () => {
   test("Check for a number", () => {
     expect(isEmployeeSize("40")).toBe(true);
@@ -57,5 +60,28 @@ describe("Checking isEmployeeSize", () => {
 
   test("Check for invalid operator", () => {
     expect(isEmployeeSize("10k-")).toBe(false);
+  });
+});
+
+// MARK: isCompanyName
+describe("Checking isCompanyName", () => {
+  test("Check for a valid name", () => {
+    expect(isCompanyName("e24")).toBe(true);
+  });
+
+  test("Check for a pure number", () => {
+    expect(isCompanyName("10")).toBe(false);
+  });
+
+  test("Check for incorrect employee size pattern", () => {
+    expect(isCompanyName("10-500")).toBe(false);
+  });
+
+  test("Check for a URL", () => {
+    expect(isCompanyName("https://facebook.com")).toBe(false);
+  });
+
+  test("Check for alphabetical name", () => {
+    expect(isCompanyName("Phleebs")).toBe(true);
   });
 });
