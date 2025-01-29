@@ -1,8 +1,11 @@
 {
-  "name": "leadsync",
-  "version": "1.0.0",
+  "name": "nucsoft",
+  "version": "1.0.1",
   "main": "index.js",
   "type": "module",
+  "bin": {
+    "nucsoft": "./index.js"
+  },
   "scripts": {
     "start": "node --watch index.js --input=companies.csv --clean=final.csv --errors=report.csv",
     "test": "vitest"
